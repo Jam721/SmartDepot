@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDepot.API", "SmartDepot.API\SmartDepot.API.csproj", "{87B11DB6-71A6-45AD-B2DB-FD0E69C12E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDepot.Application", "SmartDepot.Application\SmartDepot.Application.csproj", "{799FDD49-1A22-4937-979F-62DC8866FEC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDepot.Domain", "SmartDepot.Domain\SmartDepot.Domain.csproj", "{1B56A055-3386-4726-95D0-C92A50320870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDepot.Infrastructure", "SmartDepot.Infrastructure\SmartDepot.Infrastructure.csproj", "{162AB23F-E9BF-4149-90E2-02E9C5B805AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDepot.Persistence", "SmartDepot.Persistence\SmartDepot.Persistence.csproj", "{2FC17B0A-1C58-45FA-8BFB-BE6ED58B9864}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87B11DB6-71A6-45AD-B2DB-FD0E69C12E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B11DB6-71A6-45AD-B2DB-FD0E69C12E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B11DB6-71A6-45AD-B2DB-FD0E69C12E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B11DB6-71A6-45AD-B2DB-FD0E69C12E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799FDD49-1A22-4937-979F-62DC8866FEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799FDD49-1A22-4937-979F-62DC8866FEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799FDD49-1A22-4937-979F-62DC8866FEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799FDD49-1A22-4937-979F-62DC8866FEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B56A055-3386-4726-95D0-C92A50320870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B56A055-3386-4726-95D0-C92A50320870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B56A055-3386-4726-95D0-C92A50320870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B56A055-3386-4726-95D0-C92A50320870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162AB23F-E9BF-4149-90E2-02E9C5B805AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162AB23F-E9BF-4149-90E2-02E9C5B805AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162AB23F-E9BF-4149-90E2-02E9C5B805AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162AB23F-E9BF-4149-90E2-02E9C5B805AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FC17B0A-1C58-45FA-8BFB-BE6ED58B9864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC17B0A-1C58-45FA-8BFB-BE6ED58B9864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC17B0A-1C58-45FA-8BFB-BE6ED58B9864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC17B0A-1C58-45FA-8BFB-BE6ED58B9864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
