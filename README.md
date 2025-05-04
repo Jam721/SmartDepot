@@ -1,6 +1,52 @@
+# Во первых подписываемся на SachkovTech 
+   - YouTube: https://www.youtube.com/@SachkovTech
+   - Tg: [t.me/sachkov_blog](https://t.me/sachkov_blog)
+   - Курс: [sachkov-dotnet.ru](https://sachkov-dotnet.ru/)
+   - Twitch: [twitch.tv/sachkovtech](https://www.twitch.tv/sachkovtech)
+
 # 📦 SmartDepot — Умный склад с характером и Петровичем в придачу
 
 > **SmartDepot** — это API, где логистика встречает абсурд. Склады тут ворчат, предметы капризничают, а Петрович раздаёт советы, от которых плачут даже серверы.
+
+--- 
+## Мой тг
+   - [@Bebekon1240](https://t.me/Bebekon1240)
+---
+
+# Функционал проекта можно проверить так
+**docker-compose.yml**
+```
+services:
+  api:
+    image: bebekon/smartdepot-api:latest
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Host=db;Port=5432;Database=SmartDepot;User Id=postgres;Password=123;
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    container_name: smartdepot-db
+    environment:
+      POSTGRES_DB: SmartDepot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
+```
+Потом перейти по адресу: http://localhost:8080/swagger/index.html
 
 ## 🔧 Эндпоинты API
 
@@ -109,3 +155,21 @@
 
 
 > **ВАЖНО**: Петрович всегда прав. Даже когда не прав. Особенно тогда.
+
+
+# Как работает?
+   - Да вообще кайф
+![image](https://github.com/user-attachments/assets/bf8bc72c-c9fe-42b8-b5f6-a505f3cfa8bb)
+![image](https://github.com/user-attachments/assets/7bd56ab7-1830-4bdd-95a5-4af3808ab595)
+![image](https://github.com/user-attachments/assets/58d59e57-a4fd-4b17-9c41-c8203f8afab9)
+![image](https://github.com/user-attachments/assets/ef48d494-8674-4906-9806-bc79903f1dbf)
+![image](https://github.com/user-attachments/assets/9f219fc8-ea77-4e0b-9f46-ab6f6f151178)
+![image](https://github.com/user-attachments/assets/681d1dc9-c018-43ed-a194-ebd969470bcf)
+![image](https://github.com/user-attachments/assets/72aa800b-c78d-4b34-8518-a9bca7f73821)
+![image](https://github.com/user-attachments/assets/9972ac56-0bd3-49f7-a1e8-56925171d2c0)
+
+
+
+
+
+
