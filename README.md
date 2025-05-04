@@ -8,6 +8,41 @@
 
 > **SmartDepot** — это API, где логистика встречает абсурд. Склады тут ворчат, предметы капризничают, а Петрович раздаёт советы, от которых плачут даже серверы.
 
+--- 
+
+# Проект можно скачать так docker-compose.yml
+```
+services:
+  api:
+    image: bebekon/smartdepot-api:latest
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Host=db;Port=5432;Database=SmartDepot;User Id=postgres;Password=123;
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    container_name: smartdepot-db
+    environment:
+      POSTGRES_DB: SmartDepot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "15432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
+```
+
 ## 🔧 Эндпоинты API
 
 ---
