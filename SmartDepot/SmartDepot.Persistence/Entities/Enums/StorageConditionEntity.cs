@@ -1,4 +1,4 @@
-﻿namespace SmartDepot.Persistence.Enums;
+﻿namespace SmartDepot.Persistence.Entities.Enums;
 
 
 /// <summary>

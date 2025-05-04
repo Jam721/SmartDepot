@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartDepot.Application.Interfaces.Repository;
 using SmartDepot.Domain.Models;
-using SmartDepot.Persistence.Enums;
+using SmartDepot.Persistence.Entities.Enums;
 using SmartDepot.Persistence.Mappers;
 
 namespace SmartDepot.Persistence.Repositories;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SmartDepot.Persistence.Enums;
+using SmartDepot.Persistence.Entities.Enums;
 
 namespace SmartDepot.Persistence.Entities;
 

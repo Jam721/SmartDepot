@@ -1,7 +1,7 @@
 ﻿using SmartDepot.Domain.Enums;
 using SmartDepot.Domain.Models;
 using SmartDepot.Persistence.Entities;
-using SmartDepot.Persistence.Enums;
+using SmartDepot.Persistence.Entities.Enums;
 
 namespace SmartDepot.Persistence.Mappers;
 
