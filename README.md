@@ -155,3 +155,21 @@ volumes:
 
 
 > **ВАЖНО**: Петрович всегда прав. Даже когда не прав. Особенно тогда.
+
+
+# Как работает?
+   - Да вообще кайф
+![image](https://github.com/user-attachments/assets/bf8bc72c-c9fe-42b8-b5f6-a505f3cfa8bb)
+![image](https://github.com/user-attachments/assets/7bd56ab7-1830-4bdd-95a5-4af3808ab595)
+![image](https://github.com/user-attachments/assets/58d59e57-a4fd-4b17-9c41-c8203f8afab9)
+![image](https://github.com/user-attachments/assets/ef48d494-8674-4906-9806-bc79903f1dbf)
+![image](https://github.com/user-attachments/assets/9f219fc8-ea77-4e0b-9f46-ab6f6f151178)
+![image](https://github.com/user-attachments/assets/681d1dc9-c018-43ed-a194-ebd969470bcf)
+![image](https://github.com/user-attachments/assets/72aa800b-c78d-4b34-8518-a9bca7f73821)
+![image](https://github.com/user-attachments/assets/9972ac56-0bd3-49f7-a1e8-56925171d2c0)
+
+
+
+
+
+
