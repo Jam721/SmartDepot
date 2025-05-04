@@ -19,7 +19,7 @@
 <br>
 
 **Форма добавления предмета**
-<br>
+
 ![image](https://github.com/user-attachments/assets/315727b1-9d9e-4895-89ab-04295ad445bc)
 
 ---
@@ -43,7 +43,7 @@
 
 <br>
 **Форма перемещения**
-<br>
+
 ![image](https://github.com/user-attachments/assets/44ca7cf1-2902-4488-ab22-370e4a949433)
 
 ---
@@ -62,7 +62,7 @@
 
 <br>
 **Форма добавление склада**
-<br>
+
 ![image](https://github.com/user-attachments/assets/44f9f2ab-0cba-42d7-8105-3a7c4f8ec3f5)
 
 ---
