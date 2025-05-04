@@ -3,6 +3,8 @@ using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using SmartDepot.API.Enums;
 using SmartDepot.API.Extensions;
+using SmartDepot.Application.Interfaces.Services;
+using SmartDepot.Application.Services;
 using SmartDepot.Infrastructure;
 using SmartDepot.Persistence;
 
@@ -27,6 +29,8 @@ services.AddControllers().AddJsonOptions(opts =>
 
 services.AddDbContextExtensions(configuration);
 services.AddRegiserRepostitories();
+
+services.AddScoped<IPertrovichService, PetrovichService>();
 
 var app = builder.Build();
 

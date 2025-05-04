@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartDepot.API.Dtos;
 using SmartDepot.API.Dtos.Mappers;
 using SmartDepot.API.Dtos.Request;
+using SmartDepot.API.Dtos.Response;
 using SmartDepot.Application.Interfaces.Repository;
 
 namespace SmartDepot.API.Controllers;
@@ -27,8 +27,15 @@ public class TransferController : ControllerBase
     {
         var transfers = await _repository.GetAllTransfersAsync(cancellationToken);
 
-        if (transfers is null)
-            return NotFound("No transfers found");
+        if (transfers is null || !transfers.Any())
+        {
+            return NotFound(new ProblemDetails
+            {
+                Title = "Никто никуда не пошёл",
+                Detail = "Склад стоит как вкопанный. Перемещений не найдено. Все отдыхают?",
+                Status = StatusCodes.Status404NotFound
+            });
+        }
 
         var response = transfers.Select(t => t.Map(t.Id)).ToList();
 
@@ -44,17 +51,40 @@ public class TransferController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateTransfer([FromForm] TransferRequest request, CancellationToken cancellationToken)
     {
-        if(!ModelState.IsValid) return BadRequest(ModelState);
-        
-        var transfer = request.Map();
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(ModelState)
+            {
+                Title = "Что-то не так с формой",
+                Detail = "Проверь ещё раз. Может, ты забыл указать, откуда и куда тащить?",
+                Status = StatusCodes.Status400BadRequest
+            });
+        }
 
-        var created = await _repository.CreateTransferAsync(transfer, cancellationToken);
+        try
+        {
+            var transfer = request.Map();
 
-        if (created is null)
-            return NotFound("Transfer was not created");
+            var created = await _repository.CreateTransferAsync(transfer, cancellationToken);
 
-        var response = created.Map(created.Id);
+            if (created is null)
+            {
+                return Problem(
+                    title: "Не получилось, не фартануло",
+                    detail: "Перемещение не создано. Может, коробка слишком тяжёлая?",
+                    statusCode: StatusCodes.Status500InternalServerError);
+            }
 
-        return Ok(response);
+            var response = created.Map(created.Id);
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return Problem(
+                title: "Ай-ай-ай",
+                detail: $"Произошла непредвиденная ошибка: {ex.Message}. Мы не уверены, но возможно, это баг, а может, фича.",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
     }
 }

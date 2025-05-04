@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartDepot.API.Dtos.Mappers;
 using SmartDepot.API.Dtos.Request;
+using SmartDepot.API.Dtos.Response;
 using SmartDepot.Application.Interfaces.Repository;
 
 namespace SmartDepot.API.Controllers;
@@ -26,8 +27,15 @@ public class WarehouseController : ControllerBase
     {
         var warehouses = await _repository.GetWarehousesAsync(cancellationToken);
         
-        if (warehouses is null)
-            return NotFound("Warehouses not found");
+        if (warehouses is null || !warehouses.Any())
+        {
+            return NotFound(new ProblemDetails
+            {
+                Title = "Не найдено ни одного склада",
+                Detail = "К сожалению, на складе ничего нет. Похоже, мы заблудились.",
+                Status = StatusCodes.Status404NotFound
+            });
+        }
 
         var response = warehouses.Select(w => w.Map(w.Id)).ToList();
         return Ok(response);
@@ -45,7 +53,14 @@ public class WarehouseController : ControllerBase
         var warehouse = await _repository.GetWarehouseByIdAsync(id, cancellationToken);
         
         if (warehouse is null)
-            return NotFound("Warehouse not found");
+        {
+            return NotFound(new ProblemDetails
+            {
+                Title = "Склад не найден",
+                Detail = "Похоже, склад с таким ID не существует. Проверьте правильность данных.",
+                Status = StatusCodes.Status404NotFound
+            });
+        }
 
         var response = warehouse.Map(warehouse.Id);
         return Ok(response);
@@ -62,10 +77,17 @@ public class WarehouseController : ControllerBase
     {
         var items = await _repository.GetItemsByWarehouseAsync(id, cancellationToken);
         
-        if (items is null)
-            return NotFound("Warehouse not found");
+        if (items is null || !items.Any())
+        {
+            return NotFound(new ProblemDetails
+            {
+                Title = "Предметов нет",
+                Detail = "Этот склад пуст, и вещи в нем не найдены. Где же все ваши товары?",
+                Status = StatusCodes.Status404NotFound
+            });
+        }
 
-        var response = items.Select(i=>i.Map(i.Id)).ToList();
+        var response = items.Select(i => i.Map(i.Id)).ToList();
         return Ok(response);
     }
 
@@ -78,13 +100,26 @@ public class WarehouseController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> AddWarehouse([FromForm] WarehouseRequest request, CancellationToken cancellationToken)
     {
-        if(!ModelState.IsValid) return BadRequest(ModelState);
-        
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(ModelState)
+            {
+                Title = "Что-то пошло не так",
+                Detail = "Пожалуйста, проверьте введённые данные. Убедитесь, что все поля заполнены правильно.",
+                Status = StatusCodes.Status400BadRequest
+            });
+        }
+
         var warehouse = request.Map();
         var created = await _repository.CreateWarehouseAsync(warehouse, cancellationToken);
         
         if (created is null)
-            return BadRequest("Warehouse could not be created");
+        {
+            return Problem(
+                title: "Не удалось создать склад",
+                detail: "Не удалось создать склад. Попробуйте выбрать другое имя или ячейку.",
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
 
         var response = warehouse.Map(created.Id);
         return Ok(response);
@@ -98,16 +133,20 @@ public class WarehouseController : ControllerBase
     /// <param name="cancellationToken">Токен отмены операции</param>
     /// <returns>Результат обновления</returns>
     [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateWarehouse(
-        int id,
-        [FromForm] WarehouseRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateWarehouse(int id, [FromForm] WarehouseRequest request, CancellationToken cancellationToken)
     {
-        if(!ModelState.IsValid) return BadRequest(ModelState);
-        
-        var warehouse = request.Map();
-        await _repository.UpdateWarehouseAsync(id, warehouse, cancellationToken);
-        return Ok("Warehouse updated");
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(ModelState)
+            {
+                Title = "Ошибка обновления",
+                Detail = "Пожалуйста, проверьте введённые данные для обновления склада.",
+                Status = StatusCodes.Status400BadRequest
+            });
+        }
+
+        await _repository.UpdateWarehouseAsync(id, request.Map(), cancellationToken);
+        return Ok("Склад успешно обновлён!");
     }
 
     /// <summary>
@@ -119,16 +158,24 @@ public class WarehouseController : ControllerBase
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteWarehouse(int id, CancellationToken cancellationToken)
     {
-        if(!ModelState.IsValid) return BadRequest(ModelState);
-        
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(ModelState)
+            {
+                Title = "Не удалось удалить склад",
+                Detail = "Пожалуйста, проверьте правильность введённого ID и попробуйте снова.",
+                Status = StatusCodes.Status400BadRequest
+            });
+        }
+
         try
         {
             await _repository.DeleteWarehouseAsync(id, cancellationToken);
-            return Ok("Warehouse deleted");
+            return Ok("Склад удалён! Всегда был рад помочь.");
         }
         catch (Exception e)
         {
-            return BadRequest($"ExMessage - {e} \n Warehouse could not be deleted");
+            return BadRequest($"Произошла ошибка: {e.Message}. Склад не был удалён. Попробуйте снова.");
         }
     }
 }

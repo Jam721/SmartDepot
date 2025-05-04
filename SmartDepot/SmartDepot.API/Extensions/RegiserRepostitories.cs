@@ -10,7 +10,6 @@ public static class RegiserRepostitories
         services.AddScoped<IItemRepository, ItemRepository>();
         services.AddScoped<IWarehouseRepository, WarehouseRepository>();
         services.AddScoped<ITransferRepository, TransferRepository>();
-        services.AddScoped<IReservationRepository, ReservationRepository>();
         
         return services;
     }
