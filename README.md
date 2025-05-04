@@ -16,7 +16,6 @@
 | POST   | `/api/items/create`              | Создать предмет. |
 | PUT    | `/api/items/update/{id}`         | Обновить данные. |
 | DELETE | `/api/items/delete/{id}`         | Удалить предмет. |
-<br>
 
 **Форма добавления предмета**
 
@@ -41,7 +40,6 @@
 | GET    | `/api/transfers/get_all`         | Вся история перемещений. |
 | POST   | `/api/transfers/create`          | Запустить перемещение. |
 
-<br>
 **Форма перемещения**
 
 ![image](https://github.com/user-attachments/assets/44ca7cf1-2902-4488-ab22-370e4a949433)
@@ -60,7 +58,6 @@
 | DELETE | `/api/warehouses/delete/{id}`    | Удалить склад. |
 
 
-<br>
 **Форма добавление склада**
 
 ![image](https://github.com/user-attachments/assets/44f9f2ab-0cba-42d7-8105-3a7c4f8ec3f5)
@@ -83,7 +80,7 @@
 
 ![image](https://github.com/user-attachments/assets/f1728f1a-f75a-4ea5-8048-3cd1db491f1e)
 
-<br>
+
 **Логика перемещений**  
    - Проверка условий хранения
      
