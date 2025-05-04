@@ -1,8 +1,8 @@
 # Во первых подписываемся на SachkovTech 
-   - :yt: YouTube: https://www.youtube.com/@SachkovTech
-   - :tg:: t.me/sachkov_blog
-   - Курс: sachkov-dotnet.ru
-   - :twitch:: twitch.tv/sachkovtech
+   - YouTube: https://www.youtube.com/@SachkovTech
+   - Tg: [t.me/sachkov_blog](https://t.me/sachkov_blog)
+   - Курс: [sachkov-dotnet.ru](https://sachkov-dotnet.ru/)
+   - Twitch: [twitch.tv/sachkovtech](https://www.twitch.tv/sachkovtech)
 
 # 📦 SmartDepot — Умный склад с характером и Петровичем в придачу
 
